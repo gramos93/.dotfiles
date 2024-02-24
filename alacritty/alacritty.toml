@@ -1,0 +1,19 @@
+import = ["~/.config/alacritty/themes/kaganawa_wave.toml"]
+live_config_reload = true
+
+[env]
+TERM = "alacritty"
+EDITOR = "helix"
+
+[window]
+# decoration = "None"
+opacity = 0.9
+
+[font]
+normal = {family = "CodeNewRomanNerdFontMono", style="Regular"}
+bold = {family = "CodeNewRomanNerdFontMono", style="Bold"}
+italic = {family = "CodeNewRomanNerdFontMono", style="Italic"}
+size = 9
+
+[selection]
+save_to_clipboard = true

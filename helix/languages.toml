@@ -1,0 +1,28 @@
+[[language]]
+name = "python"
+scope = "source.python"
+auto-format = true
+injection-regex = "python"
+file-types = ["py", "pyi", "py3", "pyw", "ptl"]
+comment-token = "#"
+indent = {tab-width = 4, unit = "    "}
+language-servers = ["pyright", "ruff-lsp"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.pyright.config]
+reportMissingTypeStubs = false
+
+[language-server.pyright.config.python.analysis]
+typeChekingMode = "off"
+
+[language-server.ruff-lsp]
+command = "ruff-lsp"
+args = []
+config = {}
+
+[language.formatter]
+command = "ruff"
+args = ["format", "--line-length", "88", "--quiet", "-"]
