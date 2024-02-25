@@ -3,7 +3,7 @@ name = "python"
 scope = "source.python"
 auto-format = true
 injection-regex = "python"
-file-types = ["py", "pyi", "py3", "pyw", "ptl"]
+file-types = ["py", "pyi", "py3", "pyw", "ptl", "pyx"]
 comment-token = "#"
 indent = {tab-width = 4, unit = "    "}
 language-servers = ["pyright", "ruff-lsp"]
