@@ -33,7 +33,7 @@ set $mod Mod4
 set $term alacritty
 
 # set wallpaper
-set $wallpaper ~/Pictures/wheat-black-hole.png
+set $wallpaper ~/Pictures/tokyo-night-banners.png
 
 #####################
 # workspace layout: #

@@ -26,3 +26,6 @@ config = {}
 [language.formatter]
 command = "ruff"
 args = ["format", "--line-length", "88", "--quiet", "-"]
+
+[language-server.zls]
+command = "~/.zls/bin.zls"
