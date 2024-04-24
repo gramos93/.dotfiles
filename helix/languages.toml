@@ -1,4 +1,13 @@
 [[language]]
+name = "rust"
+language-servers = ["rust-analyzer" ]
+formatter = { command = "rustfmt" }
+auto-format = true
+indent = { tab-width = 4, unit = "    " }
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[[language]]
 name = "python"
 scope = "source.python"
 auto-format = true
@@ -28,4 +37,4 @@ command = "ruff"
 args = ["format", "--line-length", "88", "--quiet", "-"]
 
 [language-server.zls]
-command = "~/.zls/bin.zls"
+command = "zls"
