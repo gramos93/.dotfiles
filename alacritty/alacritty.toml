@@ -14,7 +14,7 @@ opacity = 0.9
 normal = {family = "CodeNewRomanNerdFontMono", style="Regular"}
 bold = {family = "CodeNewRomanNerdFontMono", style="Bold"}
 italic = {family = "CodeNewRomanNerdFontMono", style="Italic"}
-size = 7
+size = 12
 
 [selection]
 save_to_clipboard = true

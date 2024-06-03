@@ -4,12 +4,50 @@ language-servers = ["rust-analyzer" ]
 formatter = { command = "rustfmt" }
 auto-format = true
 indent = { tab-width = 4, unit = "    " }
+
 [language-server.rust-analyzer]
 command = "rust-analyzer"
 
 [[language]]
+name = "html"
+language-servers = ["typescript-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "html"] }
+auto-format = true
+
+[[language]]
+name = "json"
+language-servers = ["typescript-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "json"] }
+auto-format = true
+
+[[language]]
+name = "css"
+language-servers = ["typescript-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "css"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
 name = "typescript"
 language-servers = ["typescript-language-server"]
+formatter = {command = 'prettier', args = ["--parser", 'typescript']}
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server"]
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+
+[[language]]
+name = "yaml"
+formatter = { command = 'prettier', args = ["--parser", "yaml"] }
+auto-format = true
 
 [[language]]
 name = "python"
