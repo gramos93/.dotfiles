@@ -80,3 +80,22 @@ args = ["format", "--line-length", "88", "--quiet", "-"]
 
 [language-server.zls]
 command = "zls"
+
+[[language]]
+name = "c"
+auto-format = true
+file-types = ["c", "h"]
+formatter = { command = 'clang-format', args= ["--style", "{BasedOnStyle: Google, IndentWidth: 4}"]}
+language-servers = ["clangd"]
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "cpp"
+auto-format = true
+file-types = ["cpp", "cc", "cxx", "hpp", "hcc", "hxx"]
+formatter = { command = 'clang-format', args= ["--style", "{BasedOnStyle: Google, IndentWidth: 4}"]}
+language-servers = ["clangd"]
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.clangd.config]
+clangd.fallbackFlags = "-std=c++17 -std=c99"
