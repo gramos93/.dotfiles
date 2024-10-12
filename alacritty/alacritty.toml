@@ -4,17 +4,21 @@ live_config_reload = true
 [env]
 TERM = "alacritty"
 EDITOR = "hx"
-# WINIT_X11_SCALE_FACTOR = "1.66"
 
-[window]
-# decoration = "None"
-opacity = 0.9
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
 
-[font]
-# normal = {family = "CodeNewRomanNerdFontMono", style="Regular"}
-# bold = {family = "CodeNewRomanNerdFontMono", style="Bold"}
-# italic = {family = "CodeNewRomanNerdFontMono", style="Italic"}
-size = 11
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
 
 [selection]
 save_to_clipboard = true
