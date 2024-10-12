@@ -18,8 +18,13 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-bindkey '^[[A' history-search-forward
-bindkey '^[[B' history-search-backward
+# Keybindings
+bindkey '^[[B' history-search-forward  # Down-arrow
+bindkey '^[[A' history-search-backward # Up-arrow
+bindkey '^[[1;5C' emacs-forward-word  # Ctrl-Right
+bindkey '^[[1;5D' emacs-backward-word # Ctrl-left
+bindkey '^H' backward-kill-word # Ctrl-BackSpace
+bindkey '5~' kill-word # Ctrl-Del
 
 # Set Plugin Manager Directory
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
