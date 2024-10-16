@@ -26,10 +26,11 @@ setopt hist_find_no_dups
 # Keybindings
 bindkey '^[[B' history-search-forward  # Down-arrow
 bindkey '^[[A' history-search-backward # Up-arrow
-bindkey '^[[1;5C' emacs-forward-word  # Ctrl-Right
-bindkey '^[[1;5D' emacs-backward-word # Ctrl-left
-bindkey '^H' backward-kill-word # Ctrl-BackSpace
-bindkey '5~' kill-word # Ctrl-Del
+bindkey '^[[1;5C' emacs-forward-word   # Ctrl-Right
+bindkey '^[[1;5D' emacs-backward-word  # Ctrl-left
+bindkey '^H' backward-kill-word        # Ctrl-BackSpace
+bindkey '5~' kill-word                 # Ctrl-Del
+bindkey '~' delete-char                # Del
 
 # Set Plugin Manager Directory
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
