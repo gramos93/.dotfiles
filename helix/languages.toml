@@ -57,7 +57,7 @@ injection-regex = "python"
 file-types = ["py", "pyi", "py3", "pyw", "ptl", "pyx"]
 comment-token = "#"
 indent = {tab-width = 4, unit = "    "}
-language-servers = ["pyright", "ruff-lsp"]
+language-servers = ["pyright"]
 
 [language-server.pyright]
 command = "pyright-langserver"
