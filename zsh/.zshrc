@@ -5,6 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
 # ZSH History properties.
 HISTFILE="$HOME/.cache/zsh/.zsh_history"
 HISTSIZE=5000
@@ -41,11 +46,11 @@ zinit ice depth=1; zinit light zsh-users/zsh-completions
 zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
 
 # Load completions
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # Completion settings
-zstyle ':completion:*' matcher-list "m:{a-z}={A-Za-z}"
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=**'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 eval "$(fzf --zsh)"
