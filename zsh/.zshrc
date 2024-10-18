@@ -26,11 +26,13 @@ setopt hist_find_no_dups
 # Keybindings
 bindkey '^[[B' history-search-forward  # Down-arrow
 bindkey '^[[A' history-search-backward # Up-arrow
+bindkey  "^[[H"   beginning-of-line    # Home
+bindkey  "^[[F"   end-of-line          # End
 bindkey '^[[1;5C' emacs-forward-word   # Ctrl-Right
 bindkey '^[[1;5D' emacs-backward-word  # Ctrl-left
 bindkey '^H' backward-kill-word        # Ctrl-BackSpace
 bindkey '5~' kill-word                 # Ctrl-Del
-bindkey '~' delete-char                # Del
+bindkey "^[[3~" delete-char            # Del
 
 # Set Plugin Manager Directory
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
@@ -59,6 +61,9 @@ eval "$(fzf --zsh)"
 # Aliases
 alias la='ls -lah --color'
 alias c='clear -x'
+
+# Bun Installation
+PATH="$HOME/.bun/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
