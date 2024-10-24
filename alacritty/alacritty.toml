@@ -5,6 +5,9 @@ live_config_reload = true
 TERM = "alacritty"
 EDITOR = "hx"
 
+[window]
+opacity = 0.8
+
 [font.bold]
 family = "JetBrainsMono Nerd Font"
 style = "Bold"
