@@ -12,6 +12,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 # ZSH History properties.
 HISTFILE="$HOME/.cache/zsh/.zsh_history"
+[ ! -f $HISTFILE] && mkdir -p "$(dirname $HISTFILE)" && touch "$HISFILE"
+
 HISTSIZE=5000
 SAVEHIST=5000
 HISTDUP=erase

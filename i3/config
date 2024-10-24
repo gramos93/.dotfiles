@@ -213,5 +213,8 @@ focus_follows_mouse no
 # Always floating windows
 for_window [class="pavucontrol"] floating enable
 
+# Set monitor detect
+exec --no-startup-id "autorandr -c home"
+
 # Set wallpaper
-exec --no-startup-id feh --bg-fill /usr/share/backgrounds/default.png
+exec --no-startup-id "sleep 1 && feh --bg-fill /usr/share/backgrounds/default.png"
