@@ -61,7 +61,7 @@ language-servers = ["pyright"]
 
 [language-server.pyright]
 command = "pyright-langserver"
-args = ["--stdin"]
+args = ["--stdio"]
 
 [language-server.pyright.config]
 reportMissingTypeStubs = false
