@@ -30,8 +30,8 @@ bindkey '^[[B' history-search-forward  # Down-arrow
 bindkey '^[[A' history-search-backward # Up-arrow
 bindkey  "^[[H"   beginning-of-line    # Home
 bindkey  "^[[F"   end-of-line          # End
-bindkey  "^[[1~"   beginning-of-line    # Home
-bindkey  "^[[4~"   end-of-line          # End
+bindkey  "^[[1~"   beginning-of-line    # Home for tmux
+bindkey  "^[[4~"   end-of-line          # End for tmux
 bindkey '^[[1;5C' emacs-forward-word   # Ctrl-Right
 bindkey '^[[1;5D' emacs-backward-word  # Ctrl-left
 bindkey '^H' backward-kill-word        # Ctrl-BackSpace
