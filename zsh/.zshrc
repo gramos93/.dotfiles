@@ -69,13 +69,16 @@ alias c='clear -x'
 # Bun Installation
 PATH="$HOME/.bun/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-alias start_nvm='[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'  # This loads nvm
-
-
 # bun completions
 [ -s "/home/gramos/.bun/_bun" ] && source "/home/gramos/.bun/_bun"
 
+FNM_PATH="/home/gramos/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/gramos/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# fnm
