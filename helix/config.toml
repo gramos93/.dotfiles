@@ -5,6 +5,7 @@ true-color = true
 line-number = "relative"
 mouse = false
 bufferline = "always"
+idle-timeout = 800
 
 [editor.lsp]
 auto-signature-help = false
