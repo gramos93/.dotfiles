@@ -99,3 +99,9 @@ indent = { tab-width = 4, unit = "    " }
 
 [language-server.clangd.config]
 clangd.fallbackFlags = "-std=c++17 -std=c99"
+
+[[language]]
+name = "zig"
+auto-format = true
+language-servers = ["zls"]
+indent = {tab-width = 4, unit = "    "}
