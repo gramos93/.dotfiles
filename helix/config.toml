@@ -6,6 +6,10 @@ line-number = "relative"
 mouse = false
 bufferline = "always"
 idle-timeout = 800
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "error"
 
 [editor.lsp]
 auto-signature-help = false
