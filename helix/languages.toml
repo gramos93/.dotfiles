@@ -98,7 +98,7 @@ language-servers = ["clangd"]
 indent = { tab-width = 4, unit = "    " }
 
 [language-server.clangd.config]
-clangd.fallbackFlags = "-std=c++17 -std=c99"
+clangd.fallbackFlags = "-std=c++20 -std=c99"
 
 [[language]]
 name = "zig"
