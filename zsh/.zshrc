@@ -66,15 +66,18 @@ eval "$(fzf --zsh)"
 alias la='ls -lah --color'
 alias c='clear -x'
 
+# Local bins
+PATH="$HOME/.local/bin:$PATH"
+
 # Bun Installation
 PATH="$HOME/.bun/bin:$PATH"
 
 # bun completions
-[ -s "/home/gramos/.bun/_bun" ] && source "/home/gramos/.bun/_bun"
+[ -s "${HOME}/.bun/_bun" ] && source "/home/gramos/.bun/_bun"
 
 FNM_PATH="/home/gramos/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/gramos/.local/share/fnm:$PATH"
+  export PATH="${HOME}/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
 
