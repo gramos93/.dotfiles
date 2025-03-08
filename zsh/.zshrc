@@ -70,10 +70,10 @@ alias c='clear -x'
 PATH="$HOME/.local/bin:$PATH"
 
 # Bun Installation
-PATH="$HOME/.bun/bin:$PATH"
+PATH="~/.bun/bin:$PATH"
 
 # bun completions
-[ -s "${HOME}/.bun/_bun" ] && source "/home/gramos/.bun/_bun"
+[ -s "~/.bun/_bun" ] && source "/home/gramos/.bun/_bun"
 
 FNM_PATH="/home/gramos/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -85,3 +85,4 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fnm
+export PATH="/opt/homebrew/bin:$PATH"
