@@ -60,6 +60,9 @@ zinit cdreplay -q
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=**'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
+# fnm
+export PATH="/opt/homebrew/bin:$PATH"
+
 eval "$(fzf --zsh)"
 
 # Aliases
@@ -81,8 +84,7 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# fnm
-export PATH="/opt/homebrew/bin:$PATH"
