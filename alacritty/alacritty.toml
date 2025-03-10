@@ -6,7 +6,10 @@ TERM = "alacritty"
 EDITOR = "hx"
 
 [window]
-opacity = 0.8
+opacity = 0.9
+
+[font]
+size = 13.0
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
