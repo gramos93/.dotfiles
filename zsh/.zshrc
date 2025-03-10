@@ -73,12 +73,12 @@ alias c='clear -x'
 PATH="$HOME/.local/bin:$PATH"
 
 # Bun Installation
-PATH="~/.bun/bin:$PATH"
+PATH="$HOME/.bun/bin:$PATH"
 
 # bun completions
-[ -s "~/.bun/_bun" ] && source "/home/gramos/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-FNM_PATH="/home/gramos/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="${HOME}/.local/share/fnm:$PATH"
   eval "`fnm env`"
