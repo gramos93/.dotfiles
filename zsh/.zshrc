@@ -84,10 +84,8 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
-if [ $USER  == 'gabrielramos' ]; then
-  export CERT_PATH=$(python3 -c "import certifi; print(certifi.where())")
-  export SSL_CERT_FILE=${CERT_PATH}
-  export REQUESTS_CA_BUNDLE=${CERT_PATH}
+if [ -s "$HOME/.zsh_vars" ]; then
+  source "$HOME/.zsh_vars"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
