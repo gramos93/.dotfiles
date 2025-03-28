@@ -51,32 +51,40 @@ auto-format = true
 
 [[language]]
 name = "python"
-scope = "source.python"
-auto-format = true
+scope = "score.python"
+auto-format = false
 injection-regex = "python"
 file-types = ["py", "pyi", "py3", "pyw", "ptl", "pyx"]
 comment-token = "#"
 indent = {tab-width = 4, unit = "    "}
-language-servers = ["pyright"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", "requirements.txt", ".venv/"]
+language-servers = [ {name = "pyright", except-features=["diagnostics"]}, "ruff" ]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
 
 [language-server.pyright]
 command = "pyright-langserver"
 args = ["--stdio"]
 
 [language-server.pyright.config]
-reportMissingTypeStubs = false
-
-[language-server.pyright.config.python.analysis]
-typeChekingMode = "off"
-
-[language-server.ruff-lsp]
-command = "ruff-lsp"
-args = []
-config = {}
+python.analysis.venvPath = "."
+python.analysis.venv = ".venv"
+python.analysis.lint = true
+python.analysis.inlayHint.enable = true
+python.analysis.autoSearchPaths = true
+python.analysis.diagnosticMode = "workspace"
+python.analysis.useLibraryCodeForType = true
+python.analysis.logLevel = "Error"
+python.analysis.typeCheckingMode = "off"
+python.analysis.autoImoprtCompletion = true
+python.analysis.reportOptionalSubscript = false
+python.analysis.reportOptionalMemberAccess = false
 
 [language.formatter]
 command = "ruff"
-args = ["format", "--line-length", "88", "--quiet", "-"]
+args = ["format", "--quiet", "-"]
 
 [language-server.zls]
 command = "zls"
