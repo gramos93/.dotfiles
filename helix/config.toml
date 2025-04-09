@@ -7,7 +7,7 @@ mouse = false
 bufferline = "always"
 idle-timeout = 800
 end-of-line-diagnostics = "hint"
-clipboard-provider = "pasteboard"
+# clipboard-provider = "pasteboard"
 
 [editor.inline-diagnostics]
 cursor-line = "error"
