@@ -9,8 +9,7 @@ EDITOR = "hx"
 opacity = 0.9
 
 [font]
-size = 11.0
-# size = 14.0
+size = 14.0
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
