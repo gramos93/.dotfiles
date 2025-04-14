@@ -35,7 +35,7 @@ bindkey  "^[[4~"   end-of-line          # End for tmux
 bindkey '^[[1;5C' emacs-forward-word   # Ctrl-Right
 bindkey '^[[1;5D' emacs-backward-word  # Ctrl-left
 bindkey '^H' backward-kill-word        # Ctrl-BackSpace
-bindkey '5~' kill-word                 # Ctrl-Del
+# bindkey '5~' kill-word                 # Ctrl-Del
 bindkey "^[[3~" delete-char            # Del
 
 # Set Plugin Manager Directory
