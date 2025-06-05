@@ -10,7 +10,7 @@ end-of-line-diagnostics = "hint"
 # clipboard-provider = "pasteboard"
 
 [editor.inline-diagnostics]
-cursor-line = "error"
+cursor-line = "hint"
 
 [editor.lsp]
 auto-signature-help = false
