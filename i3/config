@@ -216,8 +216,5 @@ focus_follows_mouse no
 # Always floating windows
 for_window [class="pavucontrol"] floating enable
 
-# Remap keyboard keys with xmodmap
-exec --no-startup-id "xmodmap ~/.config/xmodmap/.xmodmap"
-
 # Set monitor detect
 exec --no-startup-id "autorandr -c home && feh --bg-fill /usr/share/backgrounds/default.png"
