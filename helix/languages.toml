@@ -58,7 +58,7 @@ file-types = ["py", "pyi", "py3", "pyw", "ptl", "pyx"]
 comment-token = "#"
 indent = {tab-width = 4, unit = "    "}
 roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", "requirements.txt", ".venv/"]
-language-servers = [ "pyright", "ruff" ]
+language-servers = [ "pyrefly", "ruff" ]
 
 [language-server.ruff]
 command = "ruff"
@@ -67,23 +67,27 @@ args = ["server"]
 [language-server.ruff.config.settings]
 logLevel = "debug"
 
-[language-server.pyright]
-command = "pyright-langserver"
-args = ["--stdio"]
+[language-server.pyrefly]
+command = "pyrefly"
+args = ["lsp"]
 
-[language-server.pyright.config]
-python.analysis.venvPath = "."
-python.analysis.venv = ".venv"
-python.analysis.lint = true
-python.analysis.inlayHint.enable = true
-python.analysis.autoSearchPaths = true
-python.analysis.diagnosticMode = "workspace"
-python.analysis.useLibraryCodeForType = true
-python.analysis.logLevel = "Error"
-python.analysis.typeCheckingMode = "basic"
-python.analysis.autoImportCompletion = true
-python.analysis.reportOptionalSubscript = false
-python.analysis.reportOptionalMemberAccess = false
+# [language-server.pyright]
+# command = "pyright-langserver"
+# args = ["--stdio"]
+
+# [language-server.pyright.config]
+# python.analysis.venvPath = "."
+# python.analysis.venv = ".venv"
+# python.analysis.lint = true
+# python.analysis.inlayHint.enable = true
+# python.analysis.autoSearchPaths = true
+# python.analysis.diagnosticMode = "workspace"
+# python.analysis.useLibraryCodeForType = true
+# python.analysis.logLevel = "Error"
+# python.analysis.typeCheckingMode = "basic"
+# python.analysis.autoImportCompletion = true
+# python.analysis.reportOptionalSubscript = false
+# python.analysis.reportOptionalMemberAccess = false
 
 [language.formatter]
 command = "ruff"
