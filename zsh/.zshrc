@@ -60,6 +60,11 @@ zinit cdreplay -q
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=**'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
+
+# Locale settings
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # fnm
 export PATH="/opt/homebrew/bin:$PATH"
 
@@ -90,3 +95,8 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/gabrielramos/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
