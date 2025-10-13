@@ -1,4 +1,4 @@
-theme = "tokyonight"
+theme = "catppuccin_macchiato" 
 
 [editor]
 true-color = true
@@ -7,12 +7,11 @@ line-number = "relative"
 mouse = false
 trim-trailing-whitespace = true
 bufferline = "always"
-idle-timeout = 800
 end-of-line-diagnostics = "hint"
 clipboard-provider = "pasteboard"
 
 [editor.inline-diagnostics]
-cursor-line = "error"
+cursor-line = "hint"
 
 [editor.lsp]
 auto-signature-help = false

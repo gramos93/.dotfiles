@@ -52,17 +52,24 @@ auto-format = true
 [[language]]
 name = "python"
 scope = "score.python"
-auto-format = false
+auto-format = true
 injection-regex = "python"
 file-types = ["py", "pyi", "py3", "pyw", "ptl", "pyx"]
 comment-token = "#"
 indent = {tab-width = 4, unit = "    "}
 roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", "requirements.txt", ".venv/"]
-language-servers = [ {name = "pyright", except-features=["diagnostics"]}, "ruff" ]
+language-servers = [ "pyright", "ruff" ]
 
 [language-server.ruff]
 command = "ruff"
 args = ["server"]
+
+[language-server.ruff.config.settings]
+logLevel = "debug"
+
+# [language-server.pyrefly]
+# command = "pyrefly"
+# args = ["lsp"]
 
 [language-server.pyright]
 command = "pyright-langserver"
@@ -77,8 +84,8 @@ python.analysis.autoSearchPaths = true
 python.analysis.diagnosticMode = "workspace"
 python.analysis.useLibraryCodeForType = true
 python.analysis.logLevel = "Error"
-python.analysis.typeCheckingMode = "off"
-python.analysis.autoImoprtCompletion = true
+python.analysis.typeCheckingMode = "basic"
+python.analysis.autoImportCompletion = true
 python.analysis.reportOptionalSubscript = false
 python.analysis.reportOptionalMemberAccess = false
 
