@@ -54,6 +54,9 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
+# Screenshot area to clipboard
+bindsym $mod+Shift+p exec --no-startup-id scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
+
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
 # A more modern dmenu replacement is rofi:
