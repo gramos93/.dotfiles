@@ -1,9 +1,12 @@
-general.import = ["~/.config/alacritty/themes/kanagawa_wave.toml"]
+general.import = ["~/.config/alacritty/themes/catppuccin_macchiato.toml"]
 general.live_config_reload = true
 
 [env]
 TERM = "alacritty"
 EDITOR = "hx"
+
+[window]
+opacity = 0.9
 
 [font]
 size = 14.0
@@ -25,8 +28,3 @@ style = "Regular"
 
 [selection]
 save_to_clipboard = true
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"
