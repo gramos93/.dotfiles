@@ -5,9 +5,6 @@ general.live_config_reload = true
 TERM = "alacritty"
 EDITOR = "hx"
 
-[window]
-opacity = 0.9
-
 [font]
 size = 14.0
 
@@ -28,3 +25,8 @@ style = "Regular"
 
 [selection]
 save_to_clipboard = true
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
