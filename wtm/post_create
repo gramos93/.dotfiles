@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Canonical wtm post_create hook (symlinked into each wtm repo by the `wtm`
+# shell wrapper in zsh/.zshrc). Edits here propagate to every linked repo.
+#
+# Starts a Claude Code agent in its OWN tmux session for the new worktree so
+# ccmux auto-detects it (branch badge, grouped under the project). Reach it via
+# `prefix a` (ccmux) or `prefix j`/`prefix k` (switch-client).
+#
+# Env from wtm: $WORKTREE_DIR $WORKTREE_NAME $BASE_BRANCH $BARE_REPO_PATH
+set -euo pipefail
+
+# tmux session names can't contain '.' or ':' — sanitize.
+session="${WORKTREE_NAME//[.:]/-}"
+
+# Detached (-d) so creating the worktree doesn't steal your current pane.
+# Idempotent: reuse the session if it already exists.
+tmux has-session -t "=$session" 2>/dev/null \
+  || tmux new-session -d -s "$session" -c "$WORKTREE_DIR" "claude"

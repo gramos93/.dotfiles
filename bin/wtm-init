@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# wtm-init — `wtm init` plus auto-linking the canonical post_create hook.
+#
+# wtm has no global-hook support, so each repo needs its own post_create. This
+# runs the normal init, then symlinks the shared hook (dotfiles/wtm/post_create)
+# into the new repo root. Edit the hook once; every linked repo picks it up.
+#
+# Usage: wtm-init <git-url> [dir]     (clone)
+#        wtm-init [path]              (adopt existing repo)
+set -euo pipefail
+
+CANON="$HOME/Projects/.dotfiles/wtm/post_create"
+
+wtm init "$@"
+
+# Resolve the repo root that init just created/adopted.
+pos=()
+for a in "$@"; do
+  case "$a" in --*) ;; *) pos+=("$a") ;; esac
+done
+first="${pos[0]:-}"
+second="${pos[1]:-}"
+
+if [[ "$first" == *://* || "$first" == *@*:* ]]; then
+  # clone: `wtm init <url> [dir]`
+  if [[ -n "$second" ]]; then
+    root="$second"
+  else
+    base="${first##*/}"
+    root="${base%.git}"
+  fi
+else
+  # adopt: `wtm init [path]`
+  root="${first:-$PWD}"
+fi
+
+if [[ -f "$CANON" && -d "$root" ]]; then
+  ln -sf "$CANON" "$root/post_create"
+  echo "🔗 linked post_create hook → $root/post_create"
+else
+  echo "⚠️  hook not linked (canon=$CANON root=$root) — link it manually" >&2
+  exit 1
+fi
