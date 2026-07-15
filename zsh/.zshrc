@@ -89,12 +89,12 @@ PATH="$HOME/.bun/bin:$PATH"
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="${HOME}/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
-if [ -s "$HOME/.zsh_vars" ]; then
-  source "$HOME/.zsh_vars"
+  eval "`fnm env --use-on-cd`"
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [ -s "$HOME/.zsh_vars" ]; then
+  source "$HOME/.zsh_vars"
+fi
