@@ -1,4 +1,9 @@
 [[language]]
+name = "markdown"
+soft-wrap.enable = true
+indent = { tab-width = 2, unit = "    " }
+
+[[language]]
 name = "rust"
 language-servers = ["rust-analyzer" ]
 formatter = { command = "rustfmt" }
