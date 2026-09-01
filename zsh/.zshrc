@@ -58,11 +58,13 @@ FPATH="$HOME/.docker/completions:$FPATH"
 # Load completions
 autoload -Uz compinit && compinit
 zinit cdreplay -q
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#8a8e9b'
 
 # Completion settings
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=**'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-
+# Enable menu selection with arrow keys
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors 'no=00:ma=48;5;238;38;5;255;1:di=36:ln=35:ex=32:pi=33:so=33:bd=33;01:cd=33;01'
 
 # Locale settings
 export LC_ALL=en_US.UTF-8
