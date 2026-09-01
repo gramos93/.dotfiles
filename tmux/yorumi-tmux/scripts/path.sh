@@ -9,4 +9,4 @@ source "$CURRENT_DIR/theme.sh"
 
 current_path="${1/#$HOME/\~}"
 
-echo "#[fg=${THEME[accent_green]},bg=${THEME[bg_bar]}]░  #[fg=${THEME[fg_text]},bg=${THEME[bg_bar]}]${current_path} "
+echo "#[fg=${THEME[accent_cream]},bg=${THEME[bg_bar]}]░  #[fg=${THEME[fg_text]},bg=${THEME[bg_bar]}]${current_path} "

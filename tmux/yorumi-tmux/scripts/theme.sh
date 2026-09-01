@@ -10,7 +10,7 @@ declare -gA THEME=(
   [fg_muted]="#A7A9B5"
 
   [accent_blue]="#798DDC"
-  [accent_green]="#D7E1B7"
-  [accent_red]="#E0777D"
-  [accent_yellow]="#E5C07B"
+  [accent_cream]="#D7E1B7"
+  [accent_red]="#F47571"
+  [accent_yellow]="#E1C084"
 )

@@ -20,7 +20,7 @@ fi
 if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
   DOT_COLOR="${THEME[accent_yellow]}"
 else
-  DOT_COLOR="${THEME[accent_green]}"
+  DOT_COLOR="${THEME[accent_cream]}"
 fi
 
 echo "#[fg=${THEME[accent_blue]},bg=${THEME[bg_bar]}]░ #[fg=${DOT_COLOR}]●#[fg=${THEME[fg_text]},bg=${THEME[bg_bar]}] ${BRANCH} "

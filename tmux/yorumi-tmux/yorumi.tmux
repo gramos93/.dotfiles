@@ -22,7 +22,7 @@ tmux set-option -g status-right-length 150
 # color B (reading left to right) it's printed as fg=A,bg=B; for a transition
 # back OUT of a colored segment onto the plain bar it's fg=<segment color>,bg=bar.
 ARROW=$''
-tmux set-option -g status-left "#[fg=${THEME[bg_dark]},bg=${THEME[accent_green]},bold]  #S #[fg=${THEME[accent_green]},bg=${THEME[bg_bar]}]${ARROW}#[default]"
+tmux set-option -g status-left "#[fg=${THEME[bg_dark]},bg=${THEME[accent_cream]},bold]  #S #[fg=${THEME[accent_cream]},bg=${THEME[bg_bar]}]${ARROW}#[default]"
 
 # --- WINDOW TABS ---
 # Each window is its own self-contained pill (opens + closes its own powerline
@@ -54,7 +54,7 @@ tmux set-option -g status-right "${current_path}${git_status}${date_and_time}${b
 # --- PANE BORDERS & SELECTION ---
 tmux set-option -g pane-border-style "fg=${THEME[bg_surface]}"
 tmux set-option -g pane-active-border-style "fg=${THEME[accent_blue]}"
-tmux set-option -g mode-style "bg=${THEME[bg_select]},fg=${THEME[accent_green]}"
+tmux set-option -g mode-style "bg=${THEME[bg_select]},fg=${THEME[accent_cream]}"
 
 # --- COMMAND PROMPT (`:`) ---
 # Muted, matching the bar itself, not a bright accent block. fill= is patched
