@@ -1,4 +1,4 @@
-theme = "eldritch_transparent"
+theme = "ayu_dark"
 
 [editor]
 true-color = true
@@ -32,3 +32,10 @@ C-l = ["move_next_word_end", "collapse_selection"]
 
 [editor.cursor-shape]
 insert = "bar"
+normal = "block"
+select = "underline"
+
+
+[keys.normal.y]
+y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "normal_mode", "collapse_selection"]
+
