@@ -11,6 +11,11 @@
 "~/.config/alacritty/alacritty.toml"  = { source = "alacritty/alacritty.toml.tera", mode = "template" }
 "~/.config/alacritty/themes"          = { source = "alacritty/themes" }
 
+# Helix (steel fork): versioned Steel config linked file by file into ~/.config/helix,
+# and the runtime dir linked from the fork checkout (cargo-installed hx finds no runtime otherwise).
+"~/.config/helix" = { source = "helix/steel", mode = "symlink-each" }
+"~/.config/helix/runtime" = { source = "~/Projects/personal/helix/runtime" }
+
 # i3 is Linux-only: macOS skips these entries.
 [dotfiles."i3/config"]
 source = "i3/config"
@@ -43,6 +48,7 @@ tfswitch = "latest"
 uv = "latest"
 vault = "latest"
 yq = "latest"
+rust = "1.90.0"  # matches the helix fork's rust-toolchain.toml
 
 # Host packages: things mise's tool registry cannot provide, plus desktop apps.
 # Fedora package names marked (F) are unverified until run on Fedora 44.
@@ -86,3 +92,35 @@ awscli = { names = { brew = "awscli", dnf = "awscli2" } }  # (F) dnf name
 "dnf:xinput"               = { os = "linux" }
 "dnf:pulseaudio-utils"     = { os = "linux" }
 "dnf:network-manager-applet" = { os = "linux" }
+
+# Build deps for the helix fork on Fedora (names unverified, (F))
+"dnf:gcc"                  = { os = "linux" }
+"dnf:gcc-c++"              = { os = "linux" }
+"dnf:make"                 = { os = "linux" }
+"dnf:cmake"                = { os = "linux" }
+"dnf:pkgconf-pkg-config"   = { os = "linux" }
+"dnf:openssl-devel"        = { os = "linux" }
+"dnf:perl"                 = { os = "linux" }
+
+# Helix steel fork (mattwparas/helix). Pinned to a commit: bump deliberately.
+# Build and plugin steps are explicit tasks, not part of every bootstrap:
+#   mise run helix:setup   (= helix:build then helix:plugins)
+[bootstrap.repos]
+"~/Projects/personal/helix" = { url = "https://github.com/mattwparas/helix.git", ref = "c16fac096a9dd162d46f53bf2411f36251d755f3" }
+
+[tasks."helix:build"]
+description = "Build and install hx (steel+git), steel, steel-language-server and forge via cargo xtask"
+dir = "~/Projects/personal/helix"
+run = "cargo xtask steel"
+sources = ["{{env.HOME}}/Projects/personal/helix/**/*.rs", "{{env.HOME}}/Projects/personal/helix/Cargo.lock", "{{env.HOME}}/Projects/personal/helix/rust-toolchain.toml"]
+outputs = ["{{env.HOME}}/.cargo/bin/hx"]
+
+[tasks."helix:plugins"]
+description = "Install Steel plugins listed in ~/.config/helix/cog.scm (native dylibs, per OS)"
+dir = "~/.config/helix"
+depends = ["helix:build"]
+run = "forge install"
+
+[tasks."helix:setup"]
+description = "Fresh-machine Helix: build the fork, then install plugins"
+depends = ["helix:plugins"]
