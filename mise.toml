@@ -41,6 +41,7 @@ saml2aws = "latest"
 temporal = "latest"
 tfswitch = "latest"
 uv = "latest"
+vault = "latest"
 yq = "latest"
 
 # Host packages: things mise's tool registry cannot provide, plus desktop apps.
