@@ -124,3 +124,20 @@ run = "forge install"
 [tasks."helix:setup"]
 description = "Fresh-machine Helix: build the fork, then install plugins"
 depends = ["helix:plugins"]
+
+[tasks."helix:update"]
+description = "Pull the latest steel-event-system, bump the pin in mise.toml, rebuild and reinstall hx, then refresh plugins"
+dir = "~/Projects/personal/helix"
+run = '''
+set -euo pipefail
+if [ -n "$(git status --porcelain)" ]; then echo "helix checkout has local changes; commit or stash first" >&2; exit 1; fi
+old=$(git rev-parse HEAD)
+git fetch origin steel-event-system
+git checkout steel-event-system
+git merge --ff-only origin/steel-event-system
+new=$(git rev-parse HEAD)
+if [ "$old" = "$new" ]; then echo "helix already at ${new:0:9}"; else git log --oneline "$old..$new"; fi
+# keep the bootstrap pin in step with the checkout (commit the change in the dotfiles repo)
+perl -pi -e "s/(mattwparas\/helix\.git\", ref = \")[0-9a-f]{40}/\${1}$new/" "$MISE_CONFIG_ROOT/mise.toml"
+mise run --force helix:plugins
+'''
