@@ -8,7 +8,9 @@ mouse = false
 trim-trailing-whitespace = true
 bufferline = "always"
 end-of-line-diagnostics = "hint"
+{%- if os() == "macos" %}
 clipboard-provider = "pasteboard"
+{%- endif %}
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
