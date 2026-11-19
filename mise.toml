@@ -106,7 +106,7 @@ awscli = { names = { brew = "awscli", dnf = "awscli2" } }  # (F) dnf name
 # Build and plugin steps are explicit tasks, not part of every bootstrap:
 #   mise run helix:setup   (= helix:build then helix:plugins)
 [bootstrap.repos]
-"~/Projects/personal/helix" = { url = "https://github.com/mattwparas/helix.git", ref = "c16fac096a9dd162d46f53bf2411f36251d755f3" }
+"~/Projects/personal/helix" = { url = "https://github.com/mattwparas/helix.git", ref = "424add100eac9ca258d969b985a8ac370469ec05" }
 
 [tasks."helix:build"]
 description = "Build and install hx (steel+git), steel, steel-language-server and forge via cargo xtask"
@@ -116,8 +116,8 @@ sources = ["{{env.HOME}}/Projects/personal/helix/**/*.rs", "{{env.HOME}}/Project
 outputs = ["{{env.HOME}}/.cargo/bin/hx"]
 
 [tasks."helix:plugins"]
-description = "Install Steel plugins listed in ~/.config/helix/cog.scm (native dylibs, per OS)"
-dir = "~/.config/helix"
+description = "Install Steel plugins from helix/steel/cog.scm (native dylibs, per OS). Runs from the repo, not ~/.config/helix: forge cannot copy the runtime symlink there."
+dir = "{{config_root}}/helix/steel"
 depends = ["helix:build"]
 run = "forge install"
 
@@ -139,5 +139,7 @@ new=$(git rev-parse HEAD)
 if [ "$old" = "$new" ]; then echo "helix already at ${new:0:9}"; else git log --oneline "$old..$new"; fi
 # keep the bootstrap pin in step with the checkout (commit the change in the dotfiles repo)
 perl -pi -e "s/(mattwparas\/helix\.git\", ref = \")[0-9a-f]{40}/\${1}$new/" "$MISE_CONFIG_ROOT/mise.toml"
-mise run --force helix:plugins
+# same steps as helix:build and helix:plugins, without re-entering mise (build always runs)
+cargo xtask steel
+(cd "$MISE_CONFIG_ROOT/helix/steel" && forge install)
 '''
