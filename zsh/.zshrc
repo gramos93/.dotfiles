@@ -35,7 +35,7 @@ bindkey  "^[[4~"   end-of-line          # End for tmux
 bindkey '^[[1;5C' emacs-forward-word   # Ctrl-Right
 bindkey '^[[1;5D' emacs-backward-word  # Ctrl-left
 bindkey '^H' backward-kill-word        # Ctrl-BackSpace
-bindkey '5~' kill-word                 # Ctrl-Del
+# bindkey '5~' kill-word                 # Ctrl-Del
 bindkey "^[[3~" delete-char            # Del
 
 # Set Plugin Manager Directory
@@ -96,6 +96,13 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# worktrunk shell integration (only when `wt` is installed)
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 if [ -s "$HOME/.zsh_vars" ]; then
   source "$HOME/.zsh_vars"
