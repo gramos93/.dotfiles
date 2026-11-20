@@ -97,8 +97,8 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# worktrunk shell integration (only when `wt` is installed)
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+# mise: tool versions on PATH (no-op until mise is installed)
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

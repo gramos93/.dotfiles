@@ -57,6 +57,7 @@ tmux = "latest"
 btop = "latest"  # aqua's btop build is Linux-only, so it is a host package
 libpq = "latest"
 awscli = { names = { brew = "awscli", dnf = "awscli2" } }  # (F) dnf name
+zsh = { os = "linux" }  # macOS ships zsh
 
 # macOS only (Fedora equivalents not yet mapped)
 "brew:bash"          = { os = "macos" }
@@ -68,7 +69,6 @@ awscli = { names = { brew = "awscli", dnf = "awscli2" } }  # (F) dnf name
 "brew:jid"           = { os = "macos" }
 "brew:tre-command"   = { os = "macos" }
 "brew:can1357/tap/omp" = { os = "macos" }
-"brew:worktrunk"     = { os = "macos" }
 "brew-cask:alacritty"  = { os = "macos" }
 "brew-cask:bruno"      = { os = "macos" }
 "brew-cask:caffeine"   = { os = "macos" }
@@ -102,11 +102,12 @@ awscli = { names = { brew = "awscli", dnf = "awscli2" } }  # (F) dnf name
 "dnf:openssl-devel"        = { os = "linux" }
 "dnf:perl"                 = { os = "linux" }
 
-# Helix steel fork (mattwparas/helix). Pinned to a commit: bump deliberately.
-# Build and plugin steps are explicit tasks, not part of every bootstrap:
-#   mise run helix:setup   (= helix:build then helix:plugins)
+# Helix steel fork (mattwparas/helix), pinned to a commit: `mise run helix:update` bumps it.
+# Repos are cloned by `mise bootstrap`; the build runs from the `bootstrap` task below
+# (or on its own: `mise run helix:setup`).
 [bootstrap.repos]
 "~/Projects/personal/helix" = { url = "https://github.com/mattwparas/helix.git", ref = "424add100eac9ca258d969b985a8ac370469ec05" }
+"~/.config/tmux/plugins/tpm" = { url = "https://github.com/tmux-plugins/tpm.git" }
 
 [tasks."helix:build"]
 description = "Build and install hx (steel+git), steel, steel-language-server and forge via cargo xtask"
@@ -124,6 +125,15 @@ run = "forge install"
 [tasks."helix:setup"]
 description = "Fresh-machine Helix: build the fork, then install plugins"
 depends = ["helix:plugins"]
+
+[tasks."tmux:plugins"]
+description = "Install tmux plugins declared in tmux.conf (tpm)"
+run = "~/.config/tmux/plugins/tpm/bin/install_plugins"
+
+# Run last by `mise bootstrap`: everything that is not declarative. Safe to repeat.
+[tasks.bootstrap]
+description = "Post-bootstrap setup: tmux plugins, then the helix fork and its plugins"
+depends = ["tmux:plugins", "helix:setup"]
 
 [tasks."helix:update"]
 description = "Pull the latest steel-event-system, bump the pin in mise.toml, rebuild and reinstall hx, then refresh plugins"
